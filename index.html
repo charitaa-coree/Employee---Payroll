@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f8fc" />
+    <meta
+      name="description"
+      content="A modern employee payroll management dashboard with Java-powered salary calculations."
+    />
+    <title>PeopleOS | Payroll management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" data-page="dashboard" aria-label="PeopleOS home">
+          <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">people<span>OS</span></span>
+        </a>
+        <div class="workspace-switcher">
+          <span class="workspace-avatar">N</span>
+          <span class="workspace-copy"><strong>Northstar Studio</strong><small>Workspace</small></span>
+          <span class="switcher-chevron">⌄</span>
+        </div>
+        <div class="nav-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-page="dashboard"><span class="nav-icon">◫</span>Overview</button>
+          <button class="nav-item" data-page="employees"><span class="nav-icon">♙</span>Employees<span class="nav-count" id="employee-nav-count">0</span></button>
+          <button class="nav-item" data-page="attendance"><span class="nav-icon">◷</span>Attendance</button>
+          <button class="nav-item" data-page="payroll"><span class="nav-icon">▤</span>Payroll<span class="nav-dot"></span></button>
+          <button class="nav-item" data-page="leave"><span class="nav-icon">▧</span>Leave<span class="nav-count pending-count" id="leave-nav-count">0</span></button>
+        </nav>
+        <div class="nav-label">INSIGHTS</div>
+        <nav class="main-nav" aria-label="Insights navigation">
+          <button class="nav-item" data-page="reports"><span class="nav-icon">▥</span>Reports</button>
+          <button class="nav-item" data-page="admin"><span class="nav-icon">⚙</span>Admin &amp; HR</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <div class="help-icon">✳</div>
+            <strong>Need a hand?</strong>
+            <p>Our team is here to help you.</p>
+            <button type="button" class="help-link" data-action="help">Visit help center <span>↗</span></button>
+          </div>
+          <button class="profile-button" data-page="admin">
+            <span class="avatar avatar-indigo">JD</span>
+            <span class="profile-copy"><strong>Jordan Davis</strong><small>HR Administrator</small></span>
+            <span class="profile-more">···</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation">☰</button>
+          <div class="breadcrumb"><span>Workspace</span><span class="crumb-separator">/</span><strong id="breadcrumb-current">Overview</strong></div>
+          <div class="topbar-actions">
+            <label class="global-search"><span>⌕</span><input id="global-search" type="search" placeholder="Search anything..." autocomplete="off" /><kbd>⌘ K</kbd></label>
+            <button class="icon-button notification-button" aria-label="Notifications" data-action="notifications">♧<span class="notification-indicator"></span></button>
+            <button class="topbar-avatar" data-page="admin" aria-label="Open admin settings">JD</button>
+          </div>
+        </header>
+        <div class="page-container" id="page-container" aria-live="polite"></div>
+      </main>
+    </div>
+    <div id="modal-root"></div>
+    <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  </body>
+</html>
