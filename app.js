@@ -413,6 +413,7 @@ async function calculateWithJava(employee) {
   });
   try {
     const response = await fetch("/api/payroll/calculate", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: payload.toString() });
+    if (response.status === 404 || response.status === 405) return calculateLocally(employee);
     if (!response.ok) throw new Error(`Payroll calculation failed (${response.status}).`);
     const result = await response.json();
     if (![result.baseSalary, result.hra, result.da, result.allowances, result.providentFund, result.otherDeductions, result.totalDeductions, result.gross, result.net].every((value) => Number.isFinite(Number(value)))) throw new Error("The payroll server returned an invalid calculation.");
